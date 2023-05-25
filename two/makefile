@@ -1,3 +1,6 @@
 all: 
-	gcc two.c
+	gcc two.c -o two
 	./a.out
+clean:
+	rm two
+	rm a.out

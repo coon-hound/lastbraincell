@@ -1,7 +1,7 @@
 all:
-	gcc mylastbraincell.c
+	gcc mylastbraincell.c -o one
 
 clean: 
-	rm -rf a.out
+	rm -rf one
 
 
