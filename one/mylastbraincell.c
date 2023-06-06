@@ -41,6 +41,20 @@ double rmse(double w)
 
 }
 
+double dcost(double w)
+{
+	double res = 0;
+
+	for(int i= 0 ; i < train_count; i++){
+		double x1 = train[i][0];
+		double x2 = train[i][1];
+		res += 2*(x1*w - x2)*(x1);
+	}
+
+	res /= train_count;
+	return res;
+}
+
 int main()
 {
 	srand(time(0));
@@ -50,10 +64,11 @@ int main()
 	double rate = 1e-2;
 
 	for(int i = 0; i < 200; i++){
-		double d = (rmse(w+x) - rmse(w))/x;
+		double d = dcost(w);
+//		double d = (rmse(w+x) - rmse(w))/x;
 		w -= rate * d;
-		printf("%f\n", rmse(w));
-		printf("%f\n", w);
+		printf("cost = %f\n", rmse(w));
+		printf("w = %f\n", w);
 	}
 	printf("-----------\n");
 
